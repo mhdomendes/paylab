@@ -45,4 +45,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function assinatura()
+    {
+        return $this->hasOne(Assinatura::class, 'usuario_id');
+    }
+
+    public function possuiAssinaturaAtiva()
+    {
+        return $this->assinatura && 
+               $this->assinatura->status === 'ativa';
+    }
 }
