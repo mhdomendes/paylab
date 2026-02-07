@@ -46,14 +46,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function assinatura()
+    public function giftCardsComprados()
     {
-        return $this->hasOne(Assinatura::class, 'usuario_id');
+        return $this->hasMany(GiftCardCompra::class);
     }
 
-    public function possuiAssinaturaAtiva()
-    {
-        return $this->assinatura && 
-               $this->assinatura->status === 'ativa';
-    }
 }
